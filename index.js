@@ -1,33 +1,60 @@
-const body = document.querySelector('body');
-const clearBtn = document.querySelector('#clear');
-
-const container = document.createElement('div');
-container.className = 'container';
-body.appendChild(container);
+const body = document.querySelector("body");
+const clearBtn = document.querySelector("#clear");
+const megac = document.querySelector('.megac')
+const container = document.createElement("div");
+const fillIn = document.querySelector(".fill-in");
+container.className = "container";
+megac.appendChild(container);
 const grids = container.childNodes;
 let numOfGrids;
 let grid;
+let color = '#F60E0E';
 
 
+function colorChange(){
+  fillIn.style.removeProperty('backgroundColor')
+  fillIn.style.backgroundColor = color;
+}
 
-for(let i = 0;i < 16*16; i++ ){
-    grid = document.createElement('div');
-    grid.className = 'grid';
+function createGrid(){  
+  // console.log(container)
+  let numOfChildren = container.childElementCount;
+  if(numOfChildren > 0){
+    for (let j = 0; j < numOfChildren; j++){
+      container.removeChild(container.lastChild);
+    }
+  }
+
+  numOfGrids = prompt();
+  for (let i = 0; i < numOfGrids * numOfGrids; i++) {
+    grid = document.createElement("div");
+    grid.className = "grid";
     container.appendChild(grid);
-};
+  }
+  container.style.gridTemplateColumns = `repeat(${numOfGrids},0fr)`
+  container.style.gridTemplateRows = `repeat(${numOfGrids},0fr)`
+  grids.forEach((grid) => grid.addEventListener("mouseenter", fill));
+  let gridHeight = 400/numOfGrids;
+  let gridWidth = 400/numOfGrids;
+  grids.forEach((grid) => {
+    grid.style.height = `${gridHeight}px`;
+    // grid.style.height = `100px`;
+    grid.style.width = `${gridWidth}px`;
+    // grid.style.width = `100px`;
 
-
-function fill(){
-    this.classList.add('fill-in');
+  });
 }
-function clear(){
-    grids.forEach(grid => grid.classList.remove('fill-in'))
+
+
+
+function fill() {
+  this.classList.add("fill-in");
+}
+function clear() {
+  grids.forEach((grid) => grid.classList.remove("fill-in"));
+  createGrid();
 }
 
-grids.forEach(grid => grid.addEventListener('mouseenter',fill));
-clearBtn.addEventListener('click', clear);
+createGrid();
 
-
-
-
-
+clearBtn.addEventListener("click", clear);
