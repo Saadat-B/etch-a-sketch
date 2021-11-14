@@ -1,3 +1,8 @@
+
+:root{
+    --bg-color: black;
+}
+
 *{
     margin: 0;
     padding: 0;
@@ -6,23 +11,30 @@
 body{
     height: 100vh;
     width: 100vw;
+    background: linear-gradient(#e66465, #9198e5);
     /* display: flex; */
     /* align-items: center; */
     /* justify-content: center; */
 }
-
+.main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+    font-family: 'Courier New', Courier, monospace;
+}
 .container{
-    box-sizing: border-box;
+    /* box-sizing: border-box; */
     /* display: block; */
-    max-height: 50%;
-    max-width: 50%;
+    /* height: 50%; */
+    width: 100%;
     display: grid;
     /* grid-template-columns: repeat(16,0fr);
     grid-template-rows: repeat(16, 0fr); */
-    align-content: center;
-    justify-content: center;
-    margin: auto;
-    padding: 0px;
+    /* align-content: center; */
+    /* justify-content: center; */
+    /* margin: auto; */
+    /* padding: 0px; */
     /* overflow: scroll; */
 }
 
@@ -35,49 +47,30 @@ body{
 }
 
 .fill-in{
-    background-color: black;
+    background-color: var(--bg-color);
 }
 
-#clear{
-    /* display: block; */
-    /* margin-left: 300px; */
-    /* margin-top: 10px; */
-    /* margin-bottom: 10px; */
-    /* padding: 0px; */
-    height: 20px;
-    width: 50px;
-    margin: auto;
-    display: block;
-    margin-bottom: 20px;
 
-}
-#color{
-    height: 20px;
-    width: 50px;
-}
-.colorPicker{
-    display: block;
-    font-size: x-large;
-    height: 20px;
-    width: 300px;
-    margin: auto;
-    padding: 10px;
-    padding-top: 0px;
-}
-.header{
-    height: 100px;
-    width: 400px;
-    margin: auto;
-    margin-bottom: 1px;
-    padding: 10px;
-    padding-bottom: 0px;
-    font-size: 50px;
-    font-weight: bold;
-    font-family: cursive;
-    /* align-content: center;
-    justify-content: center; */
-}
 .content{
-    margin: 0;
-    padding: 0;
+    display: grid;
+    width: 100%;
+    grid-template-columns: 1fr 1fr;
+}
+.controls{
+    display: flex;
+    flex-direction: row;
+}
+
+.colorPicker{
+    margin: 20px;
+}
+#clear{
+    margin: 20px;
+    height: 30px;
+    width: 100px;
+}
+
+.header{
+    margin: 20px;
+    font-size: xx-large;
 }

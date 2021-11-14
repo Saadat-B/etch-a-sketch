@@ -2,19 +2,21 @@ const body = document.querySelector("body");
 const clearBtn = document.querySelector("#clear");
 const megac = document.querySelector('.megac')
 const container = document.createElement("div");
-const fillIn = document.querySelector(".fill-in");
+const colorPicker = document.querySelector('#color');
+
+
 container.className = "container";
 megac.appendChild(container);
 const grids = container.childNodes;
 let numOfGrids;
 let grid;
-let color = '#F60E0E';
+let color = 'black';
 
 
-function colorChange(){
-  fillIn.style.removeProperty('backgroundColor')
-  fillIn.style.backgroundColor = color;
-}
+
+
+
+
 
 function createGrid(){  
   // console.log(container)
@@ -41,9 +43,15 @@ function createGrid(){
     // grid.style.height = `100px`;
     grid.style.width = `${gridWidth}px`;
     // grid.style.width = `100px`;
-
+    
   });
+  
+  
+  
+  
 }
+
+
 
 
 
@@ -55,6 +63,14 @@ function clear() {
   createGrid();
 }
 
+function colorChange(e){
+  color =  e.target.value;
+  console.log(color);
+  document.documentElement.style.setProperty('--bg-color',color);
+}
+
 createGrid();
 
 clearBtn.addEventListener("click", clear);
+
+colorPicker.addEventListener('change',colorChange);
